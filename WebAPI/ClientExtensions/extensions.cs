@@ -22,11 +22,7 @@ using System.Dynamic;
 namespace Xrm.Tools.WebAPI
 {
 
-    /*
-      predefined actions: https://msdn.microsoft.com/en-us/library/mt607829.aspx
-      predefined functions: https://msdn.microsoft.com/en-us/library/mt607866.aspx
 
-    */    
 
     public partial class CRMWebAPI
     {
@@ -200,22 +196,6 @@ namespace Xrm.Tools.WebAPI
 
         public async Task<ExpandoObject> AddListmembers(Guid listid, string entityType, Guid[] entityIds)
         {
-            /* // dit werkt ook
-            dynamic o = new ExpandoObject();
-            o.List = new ExpandoObject();
-            AddProperty(o.List, "@odata.type", "Microsoft.Dynamics.CRM.list");
-            AddProperty(o.List, "listid", listid);
-
-            o.Members = new List<ExpandoObject>(); //(from e in entityIds select new { e }).ToList();
-            foreach (var g in entityIds)
-            {
-                dynamic om = new ExpandoObject();
-                AddProperty(om, "@odata.type", "Microsoft.Dynamics.CRM." + entityType);
-                AddProperty(om, entityType + "id", g);                
-                o.Members.Add(om);
-            }
-            */
-
             var list = new ExpandoObject() as IDictionary<string, Object>;
             list.Add("@odata.type", "Microsoft.Dynamics.CRM.list");
             list.Add("listid", listid);
@@ -250,27 +230,6 @@ namespace Xrm.Tools.WebAPI
                 expandoDict.Add(propertyName, propertyValue);
         }
 
-
-        /*
-        public async Task<Guid> Create(string entityCollection, string data)
-        {
-            await CheckAuthToken();
-
-            var fullUrl = _apiUrl + entityCollection;
-
-            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("Post"), fullUrl);
-
-            request.Content = new StringContent(data, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.SendAsync(request);
-
-            response.EnsureSuccessStatusCode();
-
-            Guid idGuid = GetEntityIDFromResponse(fullUrl, response);
-
-            return idGuid;
-        }
-        */
     }
 
     public class Option
