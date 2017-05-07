@@ -1,0 +1,10 @@
+dynamic entity = new ExpandoObject();
+entity.firstname = "test1";
+entity.lastname = "test1";
+
+var client = CRMWebAPI.CreateOnpremise("crm-username", "crm-password", "crm-apiurl");
+
+Task.Run(async () =>
+{
+    Guid entityId = await client.Create("contacts", entity);
+}).Wait();
