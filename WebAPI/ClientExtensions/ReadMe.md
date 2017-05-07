@@ -2,7 +2,7 @@ Extensions for Xrm.Tools.WebAPI helper-library:
 
 https://github.com/davidyack/Xrm.Tools.CRMWebAPI
 
-###References:
+### References:
 
 Microsoft.IdentityModel.Clients.ActiveDirectory (3.10.0.0)
 
