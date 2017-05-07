@@ -1,4 +1,6 @@
-Required references (available in NuGet): 
+Custom workflow step for converting html to plain text.
+
+### Required references (available in NuGet): 
 
 https://www.nuget.org/packages/HtmlAgilityPack/
 
